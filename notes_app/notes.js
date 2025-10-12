@@ -4,14 +4,15 @@ import chalk from 'chalk'
 export const addNote = (t, b) => {
     const notes = loadNotes()
 
-    const duplicateNotes = notes.filter((note) =>  note.title === t)
+    // const duplicateNotes = notes.filter((note) =>  note.title === t)
+    const duplicateNote = notes.find((note) => note.title == t)
 
     // without arrow operator
     // const duplicateNotes = notes.filter(function(note){
     //     return note.title === t
     // })    
     
-    if(duplicateNotes.length === 0){
+    if(!duplicateNote){
         notes.push({title: t, body: b})
         saveNotes(notes)
         console.log("new note added")
@@ -62,3 +63,23 @@ export const removeNote = (title) => {
 //         console.log(chalk.red("No note with this title"))
 //     }
 // }
+
+
+
+export const listNotes = () => {
+    const notes = loadNotes()
+    notes.forEach(element => {
+        console.log(chalk.yellow(element.title))
+    });
+}
+
+export const readNote = (title) => {
+    const notes = loadNotes()
+    const note = notes.find((note) => note.title == title)
+    if(note){
+        console.log(chalk.italic.yellow(note.title))
+        console.log(chalk.yellow(note.body))
+    }else{
+        console.log(chalk.red("No note found"))
+    }
+}
