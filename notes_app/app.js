@@ -1,4 +1,4 @@
-import getNotes from './notes.js'
+import addNote from './notes.js'
 import chalk from 'chalk'
 import yargs from 'yargs'
 import {hideBin} from 'yargs/helpers'
@@ -16,16 +16,16 @@ yargs(hideBin(process.argv))
         demandOption: true,   
         type: 'string'
       })
-      .option('description', {
-        describe: 'Note description',
+      .option('body', {
+        describe: 'Note body',
         demandOption: true,   
         type: 'string'
       })
     },
     handler: (argv) => {
       console.log(chalk.green('Adding Notes'))
-      console.log('Title:', argv.title)
-      console.log('Description:', argv.description)
+      const newNote = {title: argv.title, body: argv.body}
+      addNote(newNote["title"], newNote["body"])      
     }
   })
   .parse();
