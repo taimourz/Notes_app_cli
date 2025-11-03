@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+*.md
+*.png
+*.gif
+*.mp4
+demo_notes_cli.gif
+arrow-operator.js

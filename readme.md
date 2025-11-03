@@ -17,12 +17,21 @@ You can add, remove, list, and read notes directly from your terminal.
 
 ##  Setup Instructions
 
-   ```bash
+   ``` bash
    git clone https://github.com/yourusername/notes-app.git
    cd notes-app
    npm install
    node app.js <command> [options]
    ```
+
+##  Run using Docker
+
+``` bash
+docker pull ghcr.io/taimourz/notes-cli:latest
+# example command
+docker run --rm -v ~/notes-data:/data ghcr.io/taimourz/notes-cli:latest add --title="Test" --body="My first note"
+```
+
 
  Example
  ![Notes App Cli](demo_notes_cli.gif)
